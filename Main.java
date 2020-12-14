@@ -3,29 +3,28 @@ class Main {
   public static void main(String[] args) {
     //Welcome the user and find which game they would like to play
     boolean clownUser = true;
-    int plesBeGood = 3;
+    String plesBeGood = "no";
     Scanner in = new Scanner(System.in);
     System.out.println("Welcome! You have the option to pick two games today!\n1. Find the word\n2. Addition Pattern\nPlease enter the number of the game you would like to play: ");
     //Loop to verify and force good input
     while(clownUser){
-      plesBeGood = in.nextInt();
+      plesBeGood = in.nextLine();
       //if 1 or 2 picked, break from loop
-      try{
-        assert (plesBeGood == 1 || plesBeGood == 2) : "Invalid input";
+      if(plesBeGood.equals("1") || plesBeGood.equals("2")){
         clownUser = false;
       }
-      catch(Exception e){
+      else{
         System.out.println("Ding dong your input is wrong\nEnter a 1 for the word game or a 2 for the addition pattern");
       }
     }
 
-    if(plesBeGood == 1){
+    if(plesBeGood.equals("1")){
       //Start word game
       FindWord urBad = new FindWord("VOID METHOD");
 
       boolean ja = true;
       while(ja){
-        System.out.println("Please enter a starting guess of " + urBad.getHiddenWord().length() + "letters: ");
+        System.out.println("Please enter a starting guess of " + urBad.getHiddenWord().length() + " characters: ");
         String userGuess = in.nextLine();
         System.out.println(urBad.getClue(userGuess));
 
